@@ -1,8 +1,8 @@
 export const UPDATE_VALUE = 'UPDATE_VALUE';
 
-export function updateValue(value) {
+export function updateValue(outputValue) {
     return {
         type: UPDATE_VALUE,
-        value: value
+        outputValue
     };
 }

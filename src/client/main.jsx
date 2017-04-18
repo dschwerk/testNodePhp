@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import { Provider } from 'react-redux';
 import store from './store.js';
 import { updateValue } from './actions/outputElement.action';
 
 import OutputElement from './components/OutputElement.jsx';
-
-let inputStr = '';
 
 function Title(props) {
     return <h1>{props.label}</h1>;
@@ -21,7 +20,7 @@ function clickButton() {
     const i = document.getElementById('inputText');
     const inputString = i.value; 
 
-    fetch('http://localhost/serverGet/get.php?str=' + inputString)
+    fetch('http://localhost:8081/serverGet/get.php?str=' + inputString)
         .then(resp => { return resp.json() })
         .then(json => {
             const jsonString = JSON.stringify(json);
@@ -39,8 +38,8 @@ function clickButton() {
         });
 }
 
-function changeInput(component) {
-    this.inputStr = component.target.text;
+function changeInput(component, p, v) {
+    console.log(component.target);
 }
 
 class Greeter extends React.Component {
@@ -55,14 +54,12 @@ class Greeter extends React.Component {
     }
 }
 
-function Page() {
-    return <div>
-        <Header />
-        <Greeter />
-        <OutputElement
-            value={'Pups'}
-        >
-        </OutputElement>
-    </div>
-}
-ReactDOM.render(<Page />, document.getElementById('mountPoint'));
+ReactDOM.render(        
+            <div>
+                <Header />
+                <Greeter />                
+                <Provider store={store}>
+                    <OutputElement />
+                </Provider>
+            </div>
+        , document.getElementById('mountPoint'));

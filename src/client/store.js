@@ -3,7 +3,7 @@ import { createStore, combineReducers } from 'redux';
 import { valueReducer } from './reducers/outputElement.reducer';
 
 const store = createStore(combineReducers({
-    value: valueReducer.value
+    outputValue: valueReducer
 }));
 
 export default store;

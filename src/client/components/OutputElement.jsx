@@ -1,24 +1,23 @@
-import React from 'react'; 
+import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import * as Actions from '../actions/outputElement.action';
 
 function mapStateToProps(state) {
-    const { value } = state;
-
-    return { value: value };
+    return { outputValue: state.outputValue };
 }
 
-export default class OutputElement extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            value: this.props.value
-        }
-    }
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(Actions, dispatch);
+}
 
-    updateValue(value) {
-        this.state.value = value;
-    }
+class OutputElement extends React.Component {
     render() {
-        const { value } = this.props;
-        <div className='output-element'>{ value }</div>
+        const { outputValue } = this.props;
+
+        return <div className='output-element'>VALUE: {outputValue}</div>        
     }
 }
+
+export default connect (mapStateToProps, mapDispatchToProps) (OutputElement);

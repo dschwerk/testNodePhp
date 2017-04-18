@@ -1,6 +1,6 @@
 {
   "name": "php-node-client",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Node-Client für php-Server",
   "main": "index.js",
   "license": "NLPL",
@@ -14,6 +14,8 @@
     "eslint": "^3.15.0",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
+    "node-sass": "^4.5.2",
+    "react-redux": "^5.0.4",
     "redux": "^3.6.0",
     "sass-lint": "^1.10.2",
     "webpack": "^2.2.1",
