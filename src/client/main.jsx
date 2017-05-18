@@ -6,32 +6,22 @@ import store from './store.js';
 
 import OutputElement from './components/OutputElement.jsx';
 import InputElement from './components/InputElement.jsx';
+import ClearanceLimiter from './components/ClearanceLimiter.jsx';
 
-function Title(props) {
-    return <h1>{props.label}</h1>;
-}
-function Header() {
-    return <div className="header">
-        <Title label='Hello World' />
-    </div>;
-}
-
-class Greeter extends React.Component {
+class Page extends React.Component {
     render() {
         return (
             <div>
                 <InputElement />
                 <OutputElement />
+                <ClearanceLimiter />
             </div>
-        );
+        );        
     }
 }
 
 ReactDOM.render(        
-            <div>
-                <Header />
-                <Provider store={store}>
-                    <Greeter />
-                </Provider>
-            </div>
+        <Provider store={store}>
+            <Page />
+        </Provider>
         , document.getElementById('mountPoint'));

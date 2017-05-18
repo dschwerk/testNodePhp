@@ -12,7 +12,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(Actions, dispatch);
 }
 
-class OutputElement extends React.Component {
+export class OutputElement extends React.Component {
     render() {
         const { outputValue } = this.props;
 
